@@ -14,8 +14,14 @@ export class ApiError extends Error {
   }
 }
 
+export const DEMO_TOKEN = "demo";
+
 export async function memberApi<T = unknown>(path: string, init: { method?: string; body?: unknown } = {}): Promise<T> {
   const token = memberToken.get();
+  if (token === DEMO_TOKEN) {
+    const { demoApi } = await import("./member-demo");
+    return (await demoApi(path, init.method ?? (init.body ? "POST" : "GET"), init.body)) as T;
+  }
   const res = await fetch(`${BASE}/member${path}`, {
     method: init.method ?? (init.body ? "POST" : "GET"),
     headers: {
