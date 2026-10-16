@@ -8,25 +8,41 @@ export const Route = createFileRoute("/member/profile")({
   component: Profile,
 });
 
-const FIELDS: [string, string][] = [
+const TOP: [string, string][] = [
   ["name", "Full Name"], ["father_name", "Father's Name"], ["mother_name", "Mother's Name"],
   ["nominee_name", "Nominee's Name"], ["nominee_relation", "Relation With Nominee"], ["dob", "Date of Birth"],
-  ["blood_group", "Blood Group"], ["phone_alt", "Alternative Cell Number"],
+  ["nid", "Acc. NID No"], ["blood_group", "Blood Group"],
 ];
+const BOTTOM: [string, string][] = [
+  ["post_code", "Post Code"], ["ward_no", "Ward No"], ["union_name", "Union / Municipality"],
+  ["upazila", "Sub-District Name"], ["district", "District Name"],
+];
+const inp: React.CSSProperties = { width: 293, height: 35, border: "1px solid #AAA", background: "#FAFAFA", padding: "0 10px", fontSize: 16, boxSizing: "border-box" };
+const lbl: React.CSSProperties = { fontSize: 16, height: 42, width: "45%" };
 
 function Profile() {
   const q = useMember<Record<string, string | null>>("profile", "/profile");
   const me = useMember<{ email: string | null; phone: string }>("me", "/me").data;
   const [f, setF] = useState<Record<string, string>>({});
+  const [photo, setPhoto] = useState<string | null>(null);
   const [msg, setMsg] = useState<{ ok: boolean; t: string } | null>(null);
   useEffect(() => {
     if (q.data) setF(Object.fromEntries(Object.entries(q.data).map(([k, v]) => [k, v ?? ""])));
   }, [q.data]);
 
+  const onFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (file.size > 1024 * 1024) return setMsg({ ok: false, t: "Photo must be under 1 MB." });
+    const r = new FileReader();
+    r.onload = () => setPhoto(String(r.result));
+    r.readAsDataURL(file);
+  };
+
   const save = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await memberApi("/profile", { body: f });
+      await memberApi("/profile", { body: photo ? { ...f, photo } : f });
       setMsg({ ok: true, t: "Profile updated successfully." });
       q.refetch();
     } catch (err) {
@@ -34,29 +50,41 @@ function Profile() {
     }
   };
 
+  const field = ([k, l]: [string, string]) => (
+    <tr key={k}>
+      <td style={lbl}>{l}</td><td style={{ width: "5%", fontSize: 16 }}>:</td>
+      <td><input style={inp} type="text" placeholder={k === "dob" ? "YYYY-MM-DD" : undefined} value={f[k] ?? ""} onChange={(e) => setF({ ...f, [k]: e.target.value })} /></td>
+    </tr>
+  );
+  const img = photo || f["photo"] || "/member-kit/images/avatar.png";
+
   return (
     <Page title="My Profile">
-      <form onSubmit={save}>
+      <form onSubmit={save} className="lifeos-profile">
         <Msg ok={msg?.ok} text={msg?.t ?? null} />
-        <table width="100%" border={0} cellSpacing={0} cellPadding={0}>
-          <tbody><tr><td width="60%" valign="top">
-            <table width="100%" border={0} cellSpacing={5} cellPadding={0}>
-              <tbody>
-                {FIELDS.map(([k, l]) => (
-                  <tr key={k}>
-                    <td width="30%">{l}</td><td width="2%">:</td>
-                    <td><input type={k === "dob" ? "date" : "text"} value={f[k] ?? ""} onChange={(e) => setF({ ...f, [k]: e.target.value })} /></td>
-                  </tr>
-                ))}
-                <tr><td>Email Address</td><td>:</td><td><input type="text" readOnly value={me?.email ?? ""} /></td></tr>
-                <tr><td>Cell Number</td><td>:</td><td><input type="text" readOnly value={me?.phone ?? ""} /></td></tr>
-                <tr><td valign="top">Present Address</td><td valign="top">:</td>
-                  <td><textarea rows={4} style={{ width: 300, border: "1px solid #AAA", background: "#FAFAFA" }} value={f["address_current"] ?? ""} onChange={(e) => setF({ ...f, address_current: e.target.value })} /></td></tr>
-                <tr><td /><td /><td><input type="submit" value="Update Profile" /></td></tr>
-              </tbody>
-            </table>
-          </td></tr></tbody>
-        </table>
+        <div className="lifeos-profile-grid">
+          <table border={0} cellSpacing={0} cellPadding={0} style={{ width: "100%" }}>
+            <tbody>
+              {TOP.map(field)}
+              <tr><td style={lbl}>Email Address</td><td style={{ fontSize: 16 }}>:</td><td><input style={inp} readOnly value={me?.email ?? ""} /></td></tr>
+              <tr><td style={lbl}>Mobile Number</td><td style={{ fontSize: 16 }}>:</td><td><input style={inp} readOnly value={me?.phone ?? ""} /></td></tr>
+              {field(["phone_alt", "Alternate Number"])}
+              <tr><td style={lbl}>Address</td><td style={{ fontSize: 16 }}>:</td>
+                <td><textarea style={{ ...inp, height: 97, width: 287, padding: 10 }} value={f["address_current"] ?? ""} onChange={(e) => setF({ ...f, address_current: e.target.value })} /></td></tr>
+              {BOTTOM.map(field)}
+            </tbody>
+          </table>
+          <table border={0} cellSpacing={0} cellPadding={0} style={{ width: "100%" }}>
+            <tbody>
+              <tr><td style={lbl}>Passport Photo</td><td style={{ width: "5%", fontSize: 16 }}>:</td>
+                <td><img src={img} alt="Passport" style={{ width: 322, maxWidth: "100%", height: 204, objectFit: "cover", border: "1px solid #ddd" }} onError={(e) => { (e.target as HTMLImageElement).style.visibility = "hidden"; }} /></td></tr>
+              <tr><td style={lbl}>New Photo</td><td style={{ fontSize: 16 }}>:</td>
+                <td><input type="file" accept="image/*" onChange={onFile} style={{ border: 0, fontSize: 16, background: "transparent", padding: 0 }} /></td></tr>
+              <tr><td style={{ height: 160 }} /><td /><td /></tr>
+              <tr><td /><td /><td><input type="submit" value="Save" style={{ fontSize: 16, border: "1px solid #AAA", background: "#fff", padding: "2px 8px" }} /></td></tr>
+            </tbody>
+          </table>
+        </div>
       </form>
     </Page>
   );
