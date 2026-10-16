@@ -56,7 +56,7 @@ function Profile() {
       <td><input style={inp} type="text" placeholder={k === "dob" ? "YYYY-MM-DD" : undefined} value={f[k] ?? ""} onChange={(e) => setF({ ...f, [k]: e.target.value })} /></td>
     </tr>
   );
-  const img = photo || f.photo || "/member-kit/images/avatar.png";
+  const img = photo || f["photo"] || "/member-kit/images/avatar.png";
 
   return (
     <Page title="My Profile">
@@ -70,7 +70,7 @@ function Profile() {
               <tr><td style={lbl}>Mobile Number</td><td style={{ fontSize: 16 }}>:</td><td><input style={inp} readOnly value={me?.phone ?? ""} /></td></tr>
               {field(["phone_alt", "Alternate Number"])}
               <tr><td style={lbl}>Address</td><td style={{ fontSize: 16 }}>:</td>
-                <td><textarea style={{ ...inp, height: 97, width: 287, padding: 10 }} value={f.address_current ?? ""} onChange={(e) => setF({ ...f, address_current: e.target.value })} /></td></tr>
+                <td><textarea style={{ ...inp, height: 97, width: 287, padding: 10 }} value={f["address_current"] ?? ""} onChange={(e) => setF({ ...f, address_current: e.target.value })} /></td></tr>
               {BOTTOM.map(field)}
             </tbody>
           </table>
