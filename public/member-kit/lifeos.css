@@ -45,3 +45,22 @@
 .lifeos-member .lifeos-profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 20px; }
 .lifeos-member .main_bg > #heading { font-size: 36px; font-weight: normal; color: #333; margin: 10px 0 20px; }
 @media (max-width: 800px) { .lifeos-member .lifeos-profile-grid { grid-template-columns: 1fr; gap: 10px; } .lifeos-member .lifeos-profile-grid td { display: block; width: auto !important; height: auto !important; } .lifeos-member .lifeos-form-table td { display: block; width: auto !important; height: auto !important; padding: 4px 0; } .lifeos-member .lifeos-form-table input, .lifeos-member .lifeos-form-table select, .lifeos-member .lifeos-form-table textarea { width: 100% !important; } }
+
+/* Screen-fit: every page and element stays inside the viewport on all sizes. */
+.lifeos-member-bg, .lifeos-member-bg body, .lifeos-member { max-width: 100vw; }
+.lifeos-member, .lifeos-member * { box-sizing: border-box; }
+.lifeos-member img { max-width: 100%; height: auto; }
+.lifeos-member input, .lifeos-member select, .lifeos-member textarea { max-width: 100%; }
+.lifeos-member #wrapper, .lifeos-member .main_bg, .lifeos-member .content_full, .lifeos-member .content_menu { max-width: 100%; }
+.lifeos-member table { max-width: 100%; }
+.lifeos-member td, .lifeos-member th { overflow-wrap: anywhere; }
+@media (max-width: 800px) {
+  .lifeos-member #wrapper, .lifeos-member .main_bg, .lifeos-member .content_menu, .lifeos-member .content_full, .lifeos-member .content_full > div { width: 100% !important; max-width: 100% !important; margin-left: 0 !important; margin-right: 0 !important; }
+  .lifeos-member .main_bg > #heading { font-size: 24px; padding: 0 10px; }
+  .lifeos-member .site_scroll { width: 100%; padding: 0 10px 10px; }
+  .lifeos-member .my-userid, .lifeos-member .print { padding: 0 10px 14px; font-size: 14px; }
+  .lifeos-member .header_content.lifeos-banner { height: 90px; }
+  .lifeos-member .profile_images table, .lifeos-member .profile_images td, .lifeos-member .profile_images th { width: 100% !important; }
+  .lifeos-member .anchor_button { margin-left: 0; margin-top: 6px; display: inline-block; }
+  .lifeos-member .ddsmoothmenu ul li a { padding: 0 6px; font-size: 12px; }
+}
