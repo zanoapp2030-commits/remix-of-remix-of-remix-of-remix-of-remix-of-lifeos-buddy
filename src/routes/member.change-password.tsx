@@ -8,6 +8,9 @@ export const Route = createFileRoute("/member/change-password")({
   component: ChangePassword,
 });
 
+const inp: React.CSSProperties = { width: 293, maxWidth: "100%", height: 35, border: "1px solid #AAA", background: "#FAFAFA", padding: "0 10px", fontSize: 16, boxSizing: "border-box" };
+const lbl: React.CSSProperties = { fontSize: 16, height: 42, width: "36%" };
+
 function ChangePassword() {
   const [cur, setCur] = useState("");
   const [nw, setNw] = useState("");
@@ -28,12 +31,12 @@ function ChangePassword() {
     <Page title="Change Password">
       <form onSubmit={submit}>
         <Msg ok={msg?.ok} text={msg?.t ?? null} />
-        <table border={0} cellSpacing={5} cellPadding={0}>
+        <table border={0} cellSpacing={0} cellPadding={0} style={{ width: "100%" }}>
           <tbody>
-            <tr><td width={180}>Current Password</td><td>:</td><td><input type="password" value={cur} onChange={(e) => setCur(e.target.value)} required /></td></tr>
-            <tr><td>New Password</td><td>:</td><td><input type="password" value={nw} onChange={(e) => setNw(e.target.value)} required minLength={6} /></td></tr>
-            <tr><td>Confirm Password</td><td>:</td><td><input type="password" value={cf} onChange={(e) => setCf(e.target.value)} required /></td></tr>
-            <tr><td /><td /><td><input type="submit" value="Change Password" /></td></tr>
+            <tr><td style={lbl}>Old Password *</td><td style={{ width: "2%", fontSize: 16 }}>:</td><td><input style={inp} type="password" value={cur} onChange={(e) => setCur(e.target.value)} required /></td></tr>
+            <tr><td style={lbl}>New Password *</td><td style={{ fontSize: 16 }}>:</td><td><input style={inp} type="password" value={nw} onChange={(e) => setNw(e.target.value)} required minLength={6} /></td></tr>
+            <tr><td style={lbl}>Confirm New Password *</td><td style={{ fontSize: 16 }}>:</td><td><input style={inp} type="password" value={cf} onChange={(e) => setCf(e.target.value)} required /></td></tr>
+            <tr><td /><td /><td><input type="submit" value="Save" style={{ fontSize: 16, border: "1px solid #AAA", background: "#fff", padding: "2px 8px" }} /></td></tr>
           </tbody>
         </table>
       </form>

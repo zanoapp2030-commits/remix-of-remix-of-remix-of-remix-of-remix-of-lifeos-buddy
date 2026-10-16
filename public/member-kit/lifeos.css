@@ -42,3 +42,6 @@
 .lifeos-member .print img { cursor: pointer; }
 .lifeos-member .my-userid { padding: 0 20px 20px 20px; font-size: 16px; text-align: right; }
 .lifeos-member-bg { background: url(images/back.jpg) repeat #B7D6FF; min-height: 100vh; font-family: Tahoma, Geneva, sans-serif; font-size: 12px; line-height: 1.3em; color: #000; }
+.lifeos-member .lifeos-profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 20px; }
+.lifeos-member .main_bg > #heading { font-size: 36px; font-weight: normal; color: #333; margin: 10px 0 20px; }
+@media (max-width: 800px) { .lifeos-member .lifeos-profile-grid { grid-template-columns: 1fr; gap: 10px; } .lifeos-member .lifeos-profile-grid td { display: block; width: auto !important; height: auto !important; } }
