@@ -23,7 +23,9 @@
   .lifeos-member .header_content.lifeos-banner { height: 120px; }
 }
 /* Undo the site-wide reset inside the member panel so the kit's legacy table attributes render 1:1. */
-.lifeos-member table { border-collapse: separate; text-indent: 0; }
+.lifeos-member table:not(.table) { border-collapse: separate; text-indent: 0; }
+.lifeos-member .table { border-collapse: collapse; }
+.lifeos-member .main_bg > #heading { text-align: left; }
 .lifeos-member th { text-align: center; font-weight: bold; }
 .lifeos-member table[cellpadding="2"] > tbody > tr > td, .lifeos-member table[cellpadding="2"] > tbody > tr > th { padding: 2px; }
 .lifeos-member table[cellpadding="5"] > tbody > tr > td, .lifeos-member table[cellpadding="5"] > tbody > tr > th { padding: 5px; }
