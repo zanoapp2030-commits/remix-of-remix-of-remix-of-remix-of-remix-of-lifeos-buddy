@@ -64,3 +64,28 @@
   .lifeos-member .anchor_button { margin-left: 0; margin-top: 6px; display: inline-block; }
   .lifeos-member .ddsmoothmenu ul li a { padding: 0 6px; font-size: 12px; }
 }
+
+/* Mobile fit: kill every fixed-width centered container so nothing pushes right. */
+@media (max-width: 1100px) {
+  .lifeos-member #wrapper, .lifeos-member #header, .lifeos-member .content_menu,
+  .lifeos-member .content_top div, .lifeos-member .content_full div,
+  .lifeos-member .mid_image, .lifeos-member #cr_bar,
+  .lifeos-member .col_1, .lifeos-member .col_2, .lifeos-member .col_3,
+  .lifeos-member .col_4, .lifeos-member .col_b, .lifeos-member .padding_20,
+  .lifeos-member #slider_wrapper, .lifeos-member .slider_l, .lifeos-member .slider_r {
+    width: 100% !important; max-width: 100% !important;
+    margin-left: 0 !important; margin-right: 0 !important;
+    float: none !important;
+  }
+  .lifeos-member .mid_image { padding: 0 10px; }
+  .lifeos-member .padding_20 { padding: 12px; }
+  .lifeos-member .col_3 { margin-right: 0 !important; }
+  .lifeos-member .col_4 { border-left: none; padding-top: 10px; }
+  .lifeos-member .image_frame_350, .lifeos-member .image_frame_400 { width: 100% !important; height: auto !important; padding: 8px; }
+  .lifeos-member .image_fl, .lifeos-member .image_fr { float: none; margin: 0 0 10px; display: block; }
+  .lifeos-member .float_l, .lifeos-member .float_r { float: none !important; }
+  .lifeos-member #login, .lifeos-member #member_info { float: none; margin-top: 4px; }
+  .lifeos-member input[type="text"], .lifeos-member input[type="password"],
+  .lifeos-member .input_field, .lifeos-member select, .lifeos-member textarea { width: 100% !important; }
+  .lifeos-member label { width: 100% !important; }
+}
