@@ -19,7 +19,6 @@ function Sponsors() {
         head={["Sl", "Username", "Full Name", "Reg. Date", "Cell Number", "Status"]}
         rows={rows.map((r, i) => [i + 1, <span key="u" style={{ color: "#0577B5" }}>{r.life_id}</span>, r.name ?? "—", r.created_at.slice(0, 10), r.phone, r.is_active ? "Active" : "Inactive"])}
       />
-      <div style={{ padding: "20px 0 0", fontSize: 16, textAlign: "right" }}>My User ID: {me?.life_id}</div>
     </Page>
   );
 }
