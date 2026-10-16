@@ -59,7 +59,7 @@ function Tree() {
       {!top ? <p>{q.isLoading ? "Loading…" : "No tree data yet."}</p> : (
         <table width="100%" cellSpacing={0} cellPadding={2} id="demo">
           <tbody>
-            <tr><td colSpan={4} style={{ textAlign: "center" }}><Cell n={top} size={80} onPick={setRoot} /></td></tr>
+            <tr><td colSpan={4} style={{ textAlign: "center" }}><table width="100%"><tbody><tr><Cell n={top} size={80} onPick={setRoot} /></tr></tbody></table></td></tr>
             <tr><td colSpan={4} style={{ padding: 0, textAlign: "center" }}>{line(490)}</td></tr>
             <tr>{l1.map((n, i) => <td key={i} colSpan={2} style={{ textAlign: "center" }}><table width="100%"><tbody><tr><Cell n={n} size={70} onPick={setRoot} /></tr></tbody></table></td>)}</tr>
             <tr>{l1.map((_, i) => <td key={i} colSpan={2} style={{ padding: 0, textAlign: "center" }}>{line(245)}</td>)}</tr>

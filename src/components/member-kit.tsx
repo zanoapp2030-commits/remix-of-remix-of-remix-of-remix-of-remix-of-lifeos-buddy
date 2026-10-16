@@ -33,6 +33,14 @@ const MENU: { label: string; items: { to: string; label: string }[] }[] = [
   },
 ];
 
+function printInner() {
+  const el = document.getElementById("main_member");
+  const w = window.open("", "print", "height=600,width=900");
+  if (!el || !w) return;
+  w.document.write('<html><head><title>Life OS</title><style>body{font-family:Tahoma;font-size:12px}table{border-collapse:collapse}th{background:#009541;color:#fff;padding:5px 2px}td{padding:4px}</style></head><body>' + el.innerHTML + '</body></html>');
+  w.document.close(); w.focus(); w.print(); w.close();
+}
+
 export function useMember<T>(key: string, path: string, enabled = true) {
   return useQuery({ queryKey: ["member", key], queryFn: () => memberApi<T>(path), enabled, retry: false });
 }
@@ -47,7 +55,7 @@ export function MemberShell({ children }: { children: ReactNode }) {
     else setReady(true);
   }, [navigate]);
 
-  const me = useMember<{ name: string }>("me", "/me", ready);
+  const me = useMember<{ name: string; life_id?: string }>("me", "/me", ready);
   useEffect(() => {
     if (me.error) navigate({ to: "/login" });
   }, [me.error, navigate]);
@@ -58,7 +66,7 @@ export function MemberShell({ children }: { children: ReactNode }) {
   };
 
   return (
-    <div className="lifeos-member">
+    <div className="lifeos-member lifeos-member-bg">
       <div className="content_full">
         <div className="header_content lifeos-banner">
           <Link to="/" aria-label="Life OS home" style={{ display: "block", height: 200 }} />
@@ -96,6 +104,8 @@ export function MemberShell({ children }: { children: ReactNode }) {
       <div id="wrapper">
         <div className="mid_image">
           <div id="main_member">{ready && me.data ? children : <div className="main_bg about"><h2 id="heading">Loading…</h2></div>}</div>
+          {me.data && <div className="my-userid">My User ID: {(me.data as { life_id?: string }).life_id ?? ""}</div>}
+          <div className="print"><img src="/member-kit/images/printer.png" width={32} alt="Print" title="Print Inner Content" onClick={() => printInner()} /></div>
         </div>
       </div>
       <div className="site_scroll_bottom">
