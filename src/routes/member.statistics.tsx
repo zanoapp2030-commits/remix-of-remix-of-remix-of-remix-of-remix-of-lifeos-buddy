@@ -21,18 +21,30 @@ function Stats() {
     ["Total Members", L.all, R.all],
     ["Active Members", L.active, R.active],
     ["Inactive Members", L.all - L.active, R.all - R.active],
+    ["Lifetime Matchings", rank?.lifetime_matchings ?? 0, "—"],
     ["Carry Forward", t?.left_carry ?? 0, t?.right_carry ?? 0],
   ];
   return (
     <Page title="Statistics Details View">
-      <style>{`.stat th{text-align:left}.stat td{text-align:right;padding-right:15px}`}</style>
-      <table width="60%" className="table stat" cellSpacing={0} cellPadding={0} style={{ margin: "20px auto" }}>
+      <table width="60%" className="table stat" cellSpacing={7} cellPadding={4} style={{ margin: "10px 0" }}>
+        <thead>
+          <tr>
+            <th align="left">On The Position</th>
+            <th>Team A's Value</th>
+            <th>Team B's Value</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><th style={{ width: "50%" }}>On The Position</th><th>Team A (Left)</th><th>Team B (Right)</th></tr>
-          {rows.map(([k, a, b]) => <tr key={k}><th>{k}</th><td>{a}</td><td>{b}</td></tr>)}
+          {rows.map(([k, a, b]) => (
+            <tr key={k}>
+              <th align="left">{k}</th>
+              <td align="center">{a}</td>
+              <td align="center">{b}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
-      <p style={{ textAlign: "center" }}>Current Rank: <b>{rank?.current?.name ?? "Member"}</b> &ensp;|&ensp; Lifetime Matchings: <b>{rank?.lifetime_matchings ?? 0}</b></p>
+      <p style={{ textAlign: "left" }}>Current Rank: <b>{rank?.current?.name ?? "Free Member"}</b> &mdash; <small>(rank list is pending final confirmation; no rank reward is paid until it is approved)</small></p>
     </Page>
   );
 }
