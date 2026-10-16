@@ -55,7 +55,7 @@ export function MemberShell({ children }: { children: ReactNode }) {
     else setReady(true);
   }, [navigate]);
 
-  const me = useMember<{ name: string }>("me", "/me", ready);
+  const me = useMember<{ name: string; life_id?: string }>("me", "/me", ready);
   useEffect(() => {
     if (me.error) navigate({ to: "/login" });
   }, [me.error, navigate]);
