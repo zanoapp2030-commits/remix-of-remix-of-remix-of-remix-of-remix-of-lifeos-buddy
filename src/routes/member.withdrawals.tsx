@@ -29,9 +29,9 @@ function Withdraw() {
     <Page title="Withdrawal From">
       <form onSubmit={submit}>
         <Msg ok={msg?.ok} text={msg?.t ?? null} />
-        <table border={0} cellSpacing={0} cellPadding={0} style={{ width: "100%" }}>
+        <table border={0} cellSpacing={0} cellPadding={0} className="lifeos-form-table" style={{ width: "100%" }}>
           <tbody>
-            <tr>{L("Your Withdraw Amount")}{C}<td style={{ fontSize: 16 }}>{bdt(w.data?.withdrawable)} <span style={{ color: "#C00" }}>(Pending {bdt(w.data?.pending_withdrawal)})</span></td></tr>
+            <tr>{L("Your Withdraw Amount")}{C}<td style={{ fontSize: 16, overflowWrap: "anywhere" }}>{bdt(w.data?.withdrawable)} <span style={{ color: "#C00" }}>(Pending {bdt(w.data?.pending_withdrawal)})</span></td></tr>
             <tr>{L("Enter Withdraw Amount *")}{C}<td><input style={inp} type="number" min={500} placeholder="Min 500" required value={f.amount} onChange={(e) => setF({ ...f, amount: e.target.value })} /></td></tr>
             <tr>{L("Select a Payment Method *")}{C}<td>
               <select style={{ ...inp, width: 200 }} value={f.method} onChange={(e) => setF({ ...f, method: e.target.value })}>

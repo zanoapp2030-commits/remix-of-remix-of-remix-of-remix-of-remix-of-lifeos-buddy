@@ -57,7 +57,8 @@ function Tree() {
         {msg && <span style={{ color: "#c00", marginLeft: 10 }}>{msg}</span>}
       </form>
       {!top ? <p>{q.isLoading ? "Loading…" : "No tree data yet."}</p> : (
-        <table width="100%" cellSpacing={0} cellPadding={2} id="demo">
+        <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
+        <table width="100%" cellSpacing={0} cellPadding={2} id="demo" style={{ minWidth: 460 }}>
           <tbody>
             <tr><td colSpan={4} style={{ textAlign: "center" }}><table width="100%"><tbody><tr><Cell n={top} size={80} onPick={setRoot} /></tr></tbody></table></td></tr>
             <tr><td colSpan={4} style={{ padding: 0, textAlign: "center" }}>{line(490)}</td></tr>
@@ -66,6 +67,7 @@ function Tree() {
             <tr>{l2.map((n, i) => <Cell key={i} n={n} size={60} onPick={setRoot} />)}</tr>
           </tbody>
         </table>
+        </div>
       )}
     </Page>
   );
