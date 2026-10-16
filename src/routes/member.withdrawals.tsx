@@ -22,21 +22,24 @@ function Withdraw() {
       w.refetch();
     } catch (err) { setMsg({ ok: false, t: (err as Error).message }); }
   };
+  const inp: React.CSSProperties = { width: 293, maxWidth: "100%", height: 35, border: "1px solid #AAA", background: "#FAFAFA", padding: "0 10px", fontSize: 16, boxSizing: "border-box" };
+  const L = (t: string) => <td style={{ fontSize: 16, height: 42, width: "36%" }}>{t}</td>;
+  const C = <td style={{ width: "2%", fontSize: 16 }}>:</td>;
   return (
-    <Page title="Withdrawals Form">
+    <Page title="Withdrawal From">
       <form onSubmit={submit}>
         <Msg ok={msg?.ok} text={msg?.t ?? null} />
-        <table width="60%" border={0} cellSpacing={5} cellPadding={0} style={{ margin: "20px auto" }}>
+        <table border={0} cellSpacing={0} cellPadding={0} style={{ width: "100%" }}>
           <tbody>
-            <tr><td width="35%">Withdrawable Balance</td><td width="2%">:</td><td><b>{bdt(w.data?.withdrawable)}</b></td></tr>
-            <tr><td>Pending Withdrawals</td><td>:</td><td>{bdt(w.data?.pending_withdrawal)}</td></tr>
-            <tr><td>Payment Method</td><td>:</td><td>
-              <select value={f.method} onChange={(e) => setF({ ...f, method: e.target.value })}>
+            <tr>{L("Your Withdraw Amount")}{C}<td style={{ fontSize: 16 }}>{bdt(w.data?.withdrawable)} <span style={{ color: "#C00" }}>(Pending {bdt(w.data?.pending_withdrawal)})</span></td></tr>
+            <tr>{L("Enter Withdraw Amount *")}{C}<td><input style={inp} type="number" min={500} placeholder="Min 500" required value={f.amount} onChange={(e) => setF({ ...f, amount: e.target.value })} /></td></tr>
+            <tr>{L("Select a Payment Method *")}{C}<td>
+              <select style={{ ...inp, width: 200 }} value={f.method} onChange={(e) => setF({ ...f, method: e.target.value })}>
                 {["bKash", "Nagad", "Rocket", "Bank"].map((m) => <option key={m}>{m}</option>)}
               </select></td></tr>
-            <tr><td>Account Number</td><td>:</td><td><input type="text" required value={f.account_number} onChange={(e) => setF({ ...f, account_number: e.target.value })} /></td></tr>
-            <tr><td>Amount (min 500)</td><td>:</td><td><input type="number" min={500} required value={f.amount} onChange={(e) => setF({ ...f, amount: e.target.value })} /></td></tr>
-            <tr><td /><td /><td><input type="submit" value="Submit Request" /></td></tr>
+            <tr>{L("Account Number *")}{C}<td><input style={inp} type="text" required value={f.account_number} onChange={(e) => setF({ ...f, account_number: e.target.value })} /></td></tr>
+            <tr><td style={{ fontSize: 16, height: 110 }}>Withdraw Note</td>{C}<td><textarea style={{ ...inp, height: 97, width: 200, padding: 10 }} /></td></tr>
+            <tr><td /><td /><td><input type="submit" value="Withdraw Request Now" style={{ fontSize: 16, border: "1px solid #AAA", background: "#fff", padding: "2px 8px" }} /></td></tr>
           </tbody>
         </table>
       </form>
