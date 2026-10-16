@@ -51,7 +51,8 @@ export async function demoApi(path: string, method: string, body: any): Promise<
   const paid = db.ledger.reduce((a, r) => a + Number(r.amount), 0);
   const pending = db.withdrawals.filter((w) => w.status === "PENDING").reduce((a, w) => a + Number(w.amount), 0);
   const withdrawn = db.withdrawals.filter((w) => w.status === "APPROVED").reduce((a, w) => a + Number(w.amount), 0);
-  const by_type = db.ledger.reduce((a: Record<string, number>, r) => ({ ...a, [r.ledger_type]: (a[r.ledger_type] ?? 0) + Number(r.amount) }), {});
+  const by_type: Record<string, number> = {};
+  for (const r of db.ledger) by_type[r.ledger_type] = (by_type[r.ledger_type] ?? 0) + Number(r.amount);
 
   if (method === "GET") {
     switch (p) {
