@@ -37,10 +37,16 @@ import { Route as SeniorManagementRouteImport } from './routes/senior-management
 import { Route as TripleStemcellH2oRouteImport } from './routes/triple-stemcell-h2o'
 import { Route as VideoGalleryRouteImport } from './routes/video-gallery'
 import { Route as MemberIndexRouteImport } from './routes/member.index'
+import { Route as MemberActivationRouteImport } from './routes/member.activation'
 import { Route as MemberChangePasswordRouteImport } from './routes/member.change-password'
 import { Route as MemberCommissionRouteImport } from './routes/member.commission'
 import { Route as MemberNoticeRouteImport } from './routes/member.notice'
 import { Route as MemberProfileRouteImport } from './routes/member.profile'
+import { Route as MemberSponsorsRouteImport } from './routes/member.sponsors'
+import { Route as MemberStatisticsRouteImport } from './routes/member.statistics'
+import { Route as MemberTreeRouteImport } from './routes/member.tree'
+import { Route as MemberWithdrawalsRouteImport } from './routes/member.withdrawals'
+import { Route as MemberWithdrawalsReportRouteImport } from './routes/member.withdrawals-report'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -183,6 +189,11 @@ const MemberIndexRoute = MemberIndexRouteImport.update({
   path: '/',
   getParentRoute: () => MemberRoute,
 } as any)
+const MemberActivationRoute = MemberActivationRouteImport.update({
+  id: '/activation',
+  path: '/activation',
+  getParentRoute: () => MemberRoute,
+} as any)
 const MemberChangePasswordRoute = MemberChangePasswordRouteImport.update({
   id: '/change-password',
   path: '/change-password',
@@ -201,6 +212,31 @@ const MemberNoticeRoute = MemberNoticeRouteImport.update({
 const MemberProfileRoute = MemberProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
+  getParentRoute: () => MemberRoute,
+} as any)
+const MemberSponsorsRoute = MemberSponsorsRouteImport.update({
+  id: '/sponsors',
+  path: '/sponsors',
+  getParentRoute: () => MemberRoute,
+} as any)
+const MemberStatisticsRoute = MemberStatisticsRouteImport.update({
+  id: '/statistics',
+  path: '/statistics',
+  getParentRoute: () => MemberRoute,
+} as any)
+const MemberTreeRoute = MemberTreeRouteImport.update({
+  id: '/tree',
+  path: '/tree',
+  getParentRoute: () => MemberRoute,
+} as any)
+const MemberWithdrawalsRoute = MemberWithdrawalsRouteImport.update({
+  id: '/withdrawals',
+  path: '/withdrawals',
+  getParentRoute: () => MemberRoute,
+} as any)
+const MemberWithdrawalsReportRoute = MemberWithdrawalsReportRouteImport.update({
+  id: '/withdrawals-report',
+  path: '/withdrawals-report',
   getParentRoute: () => MemberRoute,
 } as any)
 const ServicesSlugRoute = ServicesSlugRouteImport.update({
@@ -237,10 +273,16 @@ export interface FileRoutesByFullPath {
   '/senior-management': typeof SeniorManagementRoute
   '/triple-stemcell-h2o': typeof TripleStemcellH2oRoute
   '/video-gallery': typeof VideoGalleryRoute
+  '/member/activation': typeof MemberActivationRoute
   '/member/change-password': typeof MemberChangePasswordRoute
   '/member/commission': typeof MemberCommissionRoute
   '/member/notice': typeof MemberNoticeRoute
   '/member/profile': typeof MemberProfileRoute
+  '/member/sponsors': typeof MemberSponsorsRoute
+  '/member/statistics': typeof MemberStatisticsRoute
+  '/member/tree': typeof MemberTreeRoute
+  '/member/withdrawals': typeof MemberWithdrawalsRoute
+  '/member/withdrawals-report': typeof MemberWithdrawalsReportRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/member/': typeof MemberIndexRoute
 }
@@ -271,10 +313,16 @@ export interface FileRoutesByTo {
   '/senior-management': typeof SeniorManagementRoute
   '/triple-stemcell-h2o': typeof TripleStemcellH2oRoute
   '/video-gallery': typeof VideoGalleryRoute
+  '/member/activation': typeof MemberActivationRoute
   '/member/change-password': typeof MemberChangePasswordRoute
   '/member/commission': typeof MemberCommissionRoute
   '/member/notice': typeof MemberNoticeRoute
   '/member/profile': typeof MemberProfileRoute
+  '/member/sponsors': typeof MemberSponsorsRoute
+  '/member/statistics': typeof MemberStatisticsRoute
+  '/member/tree': typeof MemberTreeRoute
+  '/member/withdrawals': typeof MemberWithdrawalsRoute
+  '/member/withdrawals-report': typeof MemberWithdrawalsReportRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/member': typeof MemberIndexRoute
 }
@@ -307,10 +355,16 @@ export interface FileRoutesById {
   '/senior-management': typeof SeniorManagementRoute
   '/triple-stemcell-h2o': typeof TripleStemcellH2oRoute
   '/video-gallery': typeof VideoGalleryRoute
+  '/member/activation': typeof MemberActivationRoute
   '/member/change-password': typeof MemberChangePasswordRoute
   '/member/commission': typeof MemberCommissionRoute
   '/member/notice': typeof MemberNoticeRoute
   '/member/profile': typeof MemberProfileRoute
+  '/member/sponsors': typeof MemberSponsorsRoute
+  '/member/statistics': typeof MemberStatisticsRoute
+  '/member/tree': typeof MemberTreeRoute
+  '/member/withdrawals': typeof MemberWithdrawalsRoute
+  '/member/withdrawals-report': typeof MemberWithdrawalsReportRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/member/': typeof MemberIndexRoute
 }
@@ -344,10 +398,16 @@ export interface FileRouteTypes {
     | '/senior-management'
     | '/triple-stemcell-h2o'
     | '/video-gallery'
+    | '/member/activation'
     | '/member/change-password'
     | '/member/commission'
     | '/member/notice'
     | '/member/profile'
+    | '/member/sponsors'
+    | '/member/statistics'
+    | '/member/tree'
+    | '/member/withdrawals'
+    | '/member/withdrawals-report'
     | '/services/$slug'
     | '/member/'
   fileRoutesByTo: FileRoutesByTo
@@ -378,10 +438,16 @@ export interface FileRouteTypes {
     | '/senior-management'
     | '/triple-stemcell-h2o'
     | '/video-gallery'
+    | '/member/activation'
     | '/member/change-password'
     | '/member/commission'
     | '/member/notice'
     | '/member/profile'
+    | '/member/sponsors'
+    | '/member/statistics'
+    | '/member/tree'
+    | '/member/withdrawals'
+    | '/member/withdrawals-report'
     | '/services/$slug'
     | '/member'
   id:
@@ -413,10 +479,16 @@ export interface FileRouteTypes {
     | '/senior-management'
     | '/triple-stemcell-h2o'
     | '/video-gallery'
+    | '/member/activation'
     | '/member/change-password'
     | '/member/commission'
     | '/member/notice'
     | '/member/profile'
+    | '/member/sponsors'
+    | '/member/statistics'
+    | '/member/tree'
+    | '/member/withdrawals'
+    | '/member/withdrawals-report'
     | '/services/$slug'
     | '/member/'
   fileRoutesById: FileRoutesById
@@ -650,6 +722,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MemberIndexRouteImport
       parentRoute: typeof MemberRoute
     }
+    '/member/activation': {
+      id: '/member/activation'
+      path: '/activation'
+      fullPath: '/member/activation'
+      preLoaderRoute: typeof MemberActivationRouteImport
+      parentRoute: typeof MemberRoute
+    }
     '/member/change-password': {
       id: '/member/change-password'
       path: '/change-password'
@@ -678,6 +757,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MemberProfileRouteImport
       parentRoute: typeof MemberRoute
     }
+    '/member/sponsors': {
+      id: '/member/sponsors'
+      path: '/sponsors'
+      fullPath: '/member/sponsors'
+      preLoaderRoute: typeof MemberSponsorsRouteImport
+      parentRoute: typeof MemberRoute
+    }
+    '/member/statistics': {
+      id: '/member/statistics'
+      path: '/statistics'
+      fullPath: '/member/statistics'
+      preLoaderRoute: typeof MemberStatisticsRouteImport
+      parentRoute: typeof MemberRoute
+    }
+    '/member/tree': {
+      id: '/member/tree'
+      path: '/tree'
+      fullPath: '/member/tree'
+      preLoaderRoute: typeof MemberTreeRouteImport
+      parentRoute: typeof MemberRoute
+    }
+    '/member/withdrawals': {
+      id: '/member/withdrawals'
+      path: '/withdrawals'
+      fullPath: '/member/withdrawals'
+      preLoaderRoute: typeof MemberWithdrawalsRouteImport
+      parentRoute: typeof MemberRoute
+    }
+    '/member/withdrawals-report': {
+      id: '/member/withdrawals-report'
+      path: '/withdrawals-report'
+      fullPath: '/member/withdrawals-report'
+      preLoaderRoute: typeof MemberWithdrawalsReportRouteImport
+      parentRoute: typeof MemberRoute
+    }
     '/services/$slug': {
       id: '/services/$slug'
       path: '/services/$slug'
@@ -689,18 +803,30 @@ declare module '@tanstack/react-router' {
 }
 
 interface MemberRouteChildren {
+  MemberActivationRoute: typeof MemberActivationRoute
   MemberChangePasswordRoute: typeof MemberChangePasswordRoute
   MemberCommissionRoute: typeof MemberCommissionRoute
   MemberNoticeRoute: typeof MemberNoticeRoute
   MemberProfileRoute: typeof MemberProfileRoute
+  MemberSponsorsRoute: typeof MemberSponsorsRoute
+  MemberStatisticsRoute: typeof MemberStatisticsRoute
+  MemberTreeRoute: typeof MemberTreeRoute
+  MemberWithdrawalsRoute: typeof MemberWithdrawalsRoute
+  MemberWithdrawalsReportRoute: typeof MemberWithdrawalsReportRoute
   MemberIndexRoute: typeof MemberIndexRoute
 }
 
 const MemberRouteChildren: MemberRouteChildren = {
+  MemberActivationRoute: MemberActivationRoute,
   MemberChangePasswordRoute: MemberChangePasswordRoute,
   MemberCommissionRoute: MemberCommissionRoute,
   MemberNoticeRoute: MemberNoticeRoute,
   MemberProfileRoute: MemberProfileRoute,
+  MemberSponsorsRoute: MemberSponsorsRoute,
+  MemberStatisticsRoute: MemberStatisticsRoute,
+  MemberTreeRoute: MemberTreeRoute,
+  MemberWithdrawalsRoute: MemberWithdrawalsRoute,
+  MemberWithdrawalsReportRoute: MemberWithdrawalsReportRoute,
   MemberIndexRoute: MemberIndexRoute,
 }
 
