@@ -1,6 +1,7 @@
 # Member panel and external server
 - [ ] Resolve conflicting rank thresholds (1,000-matchings rank name) and generation-1 recipient; confirm external PHP/MySQL hosting URL for live checks.
-- [ ] Build the member panel to match the supplied dashboard kit (kit received through the new share link).
+- [ ] Build the member panel to match the supplied dashboard kit (kit received through the new share link). [done: dashboard, tree, sponsors, statistics, activation, withdrawals, withdrawals-report, commission, profile, change-password, notice; pending decision: Transaction / Mobile Recharge / Stockiest kit menus]
+- [x] Verify statistics/sponsors/activation pages against the kit screenshots in the live preview (demo mode).
 - [ ] Connect member login, profile, wallets, reports and trees to the PHP API; verify signed-out access boundaries and authenticated flows.
 - [ ] Review old project mechanisms (blocked until an accessible Google Drive connection is available).
 - [x] Prepare backendserver PHP REST API and migration-compatible MySQL schema.
