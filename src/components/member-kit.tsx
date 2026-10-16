@@ -133,6 +133,7 @@ export function Page({ title, children, center }: { title: string; children: Rea
 
 export function DataTable({ head, rows, empty = "No records found" }: { head: string[]; rows: ReactNode[][]; empty?: string }) {
   return (
+    <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
     <table className="table" width="100%" cellPadding={0} cellSpacing={0} style={{ marginTop: 20 }}>
       <thead>
         <tr>{head.map((h) => <th key={h}>{h}</th>)}</tr>
@@ -145,6 +146,7 @@ export function DataTable({ head, rows, empty = "No records found" }: { head: st
         )}
       </tbody>
     </table>
+    </div>
   );
 }
 
