@@ -4,7 +4,7 @@ import { Msg, Page, useMember } from "@/components/member-kit";
 import { memberApi } from "@/lib/member-api";
 
 export const Route = createFileRoute("/member/profile")({
-  head: () => ({ meta: [{ title: "My Profile — Life OS Member" }, { name: "description", content: "View and edit your Life OS profile." }] }),
+  head: () => ({ meta: [{ title: "My Profile — Life OS Member" }, { name: "description", content: "View and edit your Life OS profile." }, { property: "og:title", content: "My Profile — Life OS Member" }, { property: "og:description", content: "View and edit your Life OS profile." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }] }),
   component: Profile,
 });
 

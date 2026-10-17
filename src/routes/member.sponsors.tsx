@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { DataTable, Page, useMember } from "@/components/member-kit";
 
 export const Route = createFileRoute("/member/sponsors")({
-  head: () => ({ meta: [{ title: "Direct Sponsors List — Life OS Member" }, { name: "description", content: "Your direct Life OS referrals." }] }),
+  head: () => ({ meta: [{ title: "Direct Sponsors List — Life OS Member" }, { name: "description", content: "Your direct Life OS referrals." }, { property: "og:title", content: "Direct Sponsors List — Life OS Member" }, { property: "og:description", content: "Your direct Life OS referrals." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }] }),
   component: Sponsors,
 });
 

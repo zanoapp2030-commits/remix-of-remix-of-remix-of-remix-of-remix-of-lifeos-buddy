@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Page, useMember } from "@/components/member-kit";
 
 export const Route = createFileRoute("/member/tree")({
-  head: () => ({ meta: [{ title: "Genealogy Tree — Life OS Member" }, { name: "description", content: "Life OS binary genealogy tree." }] }),
+  head: () => ({ meta: [{ title: "Genealogy Tree — Life OS Member" }, { name: "description", content: "Life OS binary genealogy tree." }, { property: "og:title", content: "Genealogy Tree — Life OS Member" }, { property: "og:description", content: "Life OS binary genealogy tree." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }] }),
   component: Tree,
 });
 

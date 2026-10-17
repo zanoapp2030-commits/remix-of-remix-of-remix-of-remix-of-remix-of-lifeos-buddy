@@ -3,7 +3,7 @@ import { DataTable, fmtDate, Page, useMember } from "@/components/member-kit";
 import { bdt } from "@/lib/member-api";
 
 export const Route = createFileRoute("/member/withdrawals-report")({
-  head: () => ({ meta: [{ title: "Withdrawals Reports — Life OS Member" }, { name: "description", content: "Your Life OS withdrawal history." }] }),
+  head: () => ({ meta: [{ title: "Withdrawals Reports — Life OS Member" }, { name: "description", content: "Your Life OS withdrawal history." }, { property: "og:title", content: "Withdrawals Reports — Life OS Member" }, { property: "og:description", content: "Your Life OS withdrawal history." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }] }),
   component: Report,
 });
 

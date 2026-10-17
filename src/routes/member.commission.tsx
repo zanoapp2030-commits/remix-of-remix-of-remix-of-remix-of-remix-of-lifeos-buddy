@@ -4,7 +4,7 @@ import { DataTable, fmtDate, Page, useMember } from "@/components/member-kit";
 import { bdt, LEDGER_LABELS } from "@/lib/member-api";
 
 export const Route = createFileRoute("/member/commission")({
-  head: () => ({ meta: [{ title: "Bonus Report — Life OS Member" }, { name: "description", content: "Life OS member bonus report." }] }),
+  head: () => ({ meta: [{ title: "Bonus Report — Life OS Member" }, { name: "description", content: "Life OS member bonus report." }, { property: "og:title", content: "Bonus Report — Life OS Member" }, { property: "og:description", content: "Life OS member bonus report." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }] }),
   component: Commission,
 });
 

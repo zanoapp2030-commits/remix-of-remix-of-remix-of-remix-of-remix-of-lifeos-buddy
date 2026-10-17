@@ -3,7 +3,7 @@ import { Page, useMember } from "@/components/member-kit";
 import { bdt, LEDGER_LABELS } from "@/lib/member-api";
 
 export const Route = createFileRoute("/member/")({
-  head: () => ({ meta: [{ title: "Dashboard — Life OS Member" }, { name: "description", content: "Life OS member dashboard." }] }),
+  head: () => ({ meta: [{ title: "Dashboard — Life OS Member" }, { name: "description", content: "Life OS member dashboard." }, { property: "og:title", content: "Dashboard — Life OS Member" }, { property: "og:description", content: "Life OS member dashboard." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }] }),
   component: Dashboard,
 });
 
