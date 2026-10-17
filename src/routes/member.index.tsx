@@ -44,7 +44,7 @@ function Dashboard() {
               <table width="100%" border={0} cellSpacing={0} cellPadding={7}>
                 <tbody>
                   <tr>
-                    <td colSpan={3} style={{ textAlign: "center" }}>
+                    <td colSpan={2} style={{ textAlign: "center" }}>
                       <span className="tree-node"><span className="avatar" style={{ width: 160, height: 160, lineHeight: "160px", fontSize: 48 }}>{me.name.slice(0, 1)}</span></span>
                       <br /><br />
                     </td>
