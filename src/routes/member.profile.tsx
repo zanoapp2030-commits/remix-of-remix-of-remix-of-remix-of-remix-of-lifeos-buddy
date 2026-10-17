@@ -4,7 +4,7 @@ import { Msg, Page, useMember } from "@/components/member-kit";
 import { memberApi } from "@/lib/member-api";
 
 export const Route = createFileRoute("/member/profile")({
-  head: () => ({ meta: [{ title: "My Profile — Life OS Member" }, { name: "description", content: "View and edit your Life OS profile." }] }),
+  head: () => ({ meta: [{ title: "My Profile — Life OS Member" }, { name: "description", content: "View and edit your Life OS profile." }, { property: "og:title", content: "My Profile — Life OS Member" }, { property: "og:description", content: "View and edit your Life OS profile." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }] }),
   component: Profile,
 });
 
@@ -80,7 +80,7 @@ function Profile() {
                 <td><img src={img} alt="Passport" style={{ width: 322, maxWidth: "100%", height: 204, objectFit: "cover", border: "1px solid #ddd" }} onError={(e) => { (e.target as HTMLImageElement).style.visibility = "hidden"; }} /></td></tr>
               <tr><td style={lbl}>New Photo</td><td style={{ fontSize: 16 }}>:</td>
                 <td><input type="file" accept="image/*" onChange={onFile} style={{ border: 0, fontSize: 16, background: "transparent", padding: 0 }} /></td></tr>
-              <tr><td style={{ height: 160 }} /><td /><td /></tr>
+              <tr className="lifeos-profile-spacer"><td style={{ height: 160 }} /><td /><td /></tr>
               <tr><td /><td /><td><input type="submit" value="Save" style={{ fontSize: 16, border: "1px solid #AAA", background: "#fff", padding: "2px 8px" }} /></td></tr>
             </tbody>
           </table>

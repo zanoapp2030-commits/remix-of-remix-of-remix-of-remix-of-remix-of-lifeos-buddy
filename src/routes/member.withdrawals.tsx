@@ -4,7 +4,7 @@ import { Msg, Page, useMember } from "@/components/member-kit";
 import { bdt, memberApi } from "@/lib/member-api";
 
 export const Route = createFileRoute("/member/withdrawals")({
-  head: () => ({ meta: [{ title: "Withdrawals Form — Life OS Member" }, { name: "description", content: "Request a Life OS withdrawal." }] }),
+  head: () => ({ meta: [{ title: "Withdrawals Form — Life OS Member" }, { name: "description", content: "Request a Life OS withdrawal." }, { property: "og:title", content: "Withdrawals Form — Life OS Member" }, { property: "og:description", content: "Request a Life OS withdrawal." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }] }),
   component: Withdraw,
 });
 

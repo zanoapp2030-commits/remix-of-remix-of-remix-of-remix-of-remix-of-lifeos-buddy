@@ -4,7 +4,7 @@ import { Msg, Page } from "@/components/member-kit";
 import { memberApi } from "@/lib/member-api";
 
 export const Route = createFileRoute("/member/change-password")({
-  head: () => ({ meta: [{ title: "Change Password — Life OS Member" }, { name: "description", content: "Change your Life OS password." }] }),
+  head: () => ({ meta: [{ title: "Change Password — Life OS Member" }, { name: "description", content: "Change your Life OS password." }, { property: "og:title", content: "Change Password — Life OS Member" }, { property: "og:description", content: "Change your Life OS password." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }] }),
   component: ChangePassword,
 });
 

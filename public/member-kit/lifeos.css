@@ -89,3 +89,37 @@
   .lifeos-member .input_field, .lifeos-member select, .lifeos-member textarea { width: 100% !important; }
   .lifeos-member label { width: 100% !important; }
 }
+
+/* Stack only the outer account columns; keep the reference data tables intact. */
+@media (max-width: 800px) {
+  .lifeos-member .mid_image { padding: 0; }
+  .lifeos-member #main_member { clear: both; width: 100%; padding: 10px; }
+  .lifeos-member .content_full, .lifeos-member .header_content.lifeos-banner > a { height: 90px !important; }
+  .lifeos-member #menu { display: flow-root; height: auto; padding-left: 0; }
+  .lifeos-member #menu > ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lifeos-member #menu > ul > li { float: none; min-width: 0; }
+  .lifeos-member #menu > ul > li:nth-child(even) > ul { left: auto; right: 0; }
+  .lifeos-member #menu ul li ul li a { width: 100%; height: auto; min-height: 32px; white-space: normal; line-height: 1.4; padding: 8px; }
+  .lifeos-member .main_bg > #heading { padding-left: 0; padding-right: 0; line-height: 1.25; }
+  .lifeos-member .lifeos-dashboard-layout > tbody > tr { display: block; }
+  .lifeos-member .lifeos-dashboard-layout > tbody > tr > td {
+    display: block; width: 100%; padding: 0 !important;
+  }
+  .lifeos-member .lifeos-dashboard-layout > tbody > tr > td:empty { display: none; }
+  .lifeos-member .lifeos-dashboard-layout > tbody > tr > td.profile_images { padding: 10px !important; }
+  .lifeos-member .lifeos-dashboard-layout > tbody > tr > td.profile_images + td + td { margin-top: 20px; }
+  .lifeos-member .profile_images table { table-layout: fixed; }
+  .lifeos-member .profile_images th, .lifeos-member .profile_images td { width: auto !important; }
+  .lifeos-member .lifeos-profile-grid { min-width: 0; gap: 16px; }
+  .lifeos-member .lifeos-profile-grid > table { min-width: 0; }
+  .lifeos-member .lifeos-profile-grid > table > tbody > tr {
+    display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; margin-bottom: 12px;
+  }
+  .lifeos-member .lifeos-profile-grid > table > tbody > tr > td {
+    min-width: 0; padding: 0; line-height: 1.4;
+  }
+  .lifeos-member .lifeos-profile-grid > table > tbody > tr > td:nth-child(2) { display: none; }
+  .lifeos-member .lifeos-profile-grid > table > tbody > tr > td:first-child:not(:empty)::after { content: " :"; }
+  .lifeos-member .lifeos-profile-grid > table > tbody > tr.lifeos-profile-spacer { display: none; }
+  .lifeos-member .lifeos-profile-grid input[type="file"] { font-size: 14px !important; }
+}

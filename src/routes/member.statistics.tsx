@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Page, useMember } from "@/components/member-kit";
 
 export const Route = createFileRoute("/member/statistics")({
-  head: () => ({ meta: [{ title: "Statistics View — Life OS Member" }, { name: "description", content: "Life OS team statistics." }] }),
+  head: () => ({ meta: [{ title: "Statistics View — Life OS Member" }, { name: "description", content: "Life OS team statistics." }, { property: "og:title", content: "Statistics View — Life OS Member" }, { property: "og:description", content: "Life OS team statistics." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }] }),
   component: Stats,
 });
 
