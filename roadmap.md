@@ -1,5 +1,5 @@
 # Member panel and external server
-- [ ] Preserve the desktop member-panel layout with proportional screen fitting on every device; verify all 11 pages and menu interactions.
+- [x] Preserve the desktop member-panel layout with proportional screen fitting; all 11 pages passed at 320/393/768/1024/1280px without page overflow, with one-row navigation and mobile profile navigation/input verified in demo mode. Live-account checks remain blocked by the external PHP host.
 - [x] Finish mobile dashboard full-width layout and profile label/colon alignment; all 11 member pages verified in demo mode at 320/390/768px, desktop columns preserved. Live-account checks still require the external PHP host.
 - [ ] Resolve conflicting rank thresholds (1,000-matchings rank name) and generation-1 recipient; confirm external PHP/MySQL hosting URL for live checks.
 - [ ] Build the member panel to match the supplied dashboard kit (kit received through the new share link). [done: dashboard, tree, sponsors, statistics, activation, withdrawals, withdrawals-report, commission, profile, change-password, notice; pending decision: Transaction / Mobile Recharge / Stockiest kit menus]
