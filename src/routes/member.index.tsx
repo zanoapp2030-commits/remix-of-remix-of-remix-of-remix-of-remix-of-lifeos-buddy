@@ -36,7 +36,7 @@ function Dashboard() {
 
   return (
     <Page title="Dashboard">
-      <table width="100%" border={0} cellSpacing={0} cellPadding={0}>
+      <table className="lifeos-dashboard-layout" width="100%" border={0} cellSpacing={0} cellPadding={0}>
         <tbody>
           <tr>
             <td width="5%" style={{ padding: "0 20px" }} />

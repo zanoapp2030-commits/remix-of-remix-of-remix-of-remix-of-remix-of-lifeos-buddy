@@ -1,4 +1,5 @@
 # Member panel and external server
+- [ ] Finish mobile dashboard full-width layout and profile label/colon alignment; verify all member pages at narrow widths.
 - [ ] Resolve conflicting rank thresholds (1,000-matchings rank name) and generation-1 recipient; confirm external PHP/MySQL hosting URL for live checks.
 - [ ] Build the member panel to match the supplied dashboard kit (kit received through the new share link). [done: dashboard, tree, sponsors, statistics, activation, withdrawals, withdrawals-report, commission, profile, change-password, notice; pending decision: Transaction / Mobile Recharge / Stockiest kit menus]
 - [x] Verify statistics/sponsors/activation pages against the kit screenshots in the live preview (demo mode).
