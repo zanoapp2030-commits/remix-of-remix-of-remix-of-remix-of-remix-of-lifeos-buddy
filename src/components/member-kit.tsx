@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { memberApi, memberToken } from "@/lib/member-api";
 
 /** Menu mirrors the reference kit's ddsmoothmenu structure. */
@@ -49,6 +49,18 @@ export function MemberShell({ children }: { children: ReactNode }) {
   const navigate = useNavigate();
   const [ready, setReady] = useState(false);
   const [open, setOpen] = useState<number | null>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+    const observer = new ResizeObserver(([entry]) => {
+      if (entry) setScale(Math.min(1, entry.contentRect.width / 1100));
+    });
+    observer.observe(viewport);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!memberToken.get()) navigate({ to: "/login" });
@@ -66,7 +78,8 @@ export function MemberShell({ children }: { children: ReactNode }) {
   };
 
   return (
-    <div className="lifeos-member lifeos-member-bg">
+    <div ref={viewportRef} className="lifeos-member-viewport">
+    <div className="lifeos-member lifeos-member-bg" style={{ zoom: scale }}>
       <div className="content_full">
         <div className="header_content lifeos-banner">
           <Link to="/" aria-label="Life OS home" style={{ display: "block", height: 200 }} />
@@ -118,6 +131,7 @@ export function MemberShell({ children }: { children: ReactNode }) {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
